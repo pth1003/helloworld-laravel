@@ -12,7 +12,7 @@
     <input type="text" placeholder="Enter email" name="email">
 
     <h3>Pass word</h3>
-    <input type="text" placeholder="Enter password" name="password">
+    <input type="password" placeholder="Enter password" name="password">
 
     <h3>Address</h3>
     <input type="text" placeholder="Enter address" name="address">

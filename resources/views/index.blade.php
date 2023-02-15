@@ -19,9 +19,12 @@
                 <th>Email</th>
                 <th>Address</th>
                 <th>Create date</th>
+                <th>Update date</th>
                 <th>Delete</th>
+                <th>Edit</th>
+
             </tr>
-            @foreach($customerList as $key => $customerValue)
+            @foreach($customer as $key => $customerValue)
                 <tr>
                     <td>{{ ++$key }}</td>
                     <td>{{ $customerValue->fullname }}</td>
@@ -29,10 +32,15 @@
                     <td>{{ $customerValue->email }}</td>
                     <td>{{ $customerValue->address }}</td>
                     <td>{{ $customerValue->created_at }}</td>
-                    <td>Del</td>
+                    <td>{{ $customerValue->updated_at }}</td>
+                    <td><a onclick="return confirm('delete confirm')" href="{{route('delete', ['id'=>$customerValue->id])}}">Delete</a></td>
+                    <td><a href="{{route('updateCus', ['id'=>$customerValue->id])}}">Update</a></td>
                 </tr>
             @endforeach
         </table>
+        <div class="pagination">
+            {!! $customer->links() !!}
+        </div>
     </div>
 </body>
 </html>

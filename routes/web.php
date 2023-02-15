@@ -37,7 +37,12 @@ use App\Http\Controllers\CustomerController;
 
 
 Route::get('/', [CustomerController::class, 'index'])->name('index');
+//Route::get('/index1', [CustomerController::class, 'index1']);
 
 Route::get('/add', [CustomerController::class, 'addCustomer'])->name('add');
-Route::post('/add', [CustomerController::class, 'postCustomer'])->name('addPost');
+Route::post('/add', [CustomerController::class, 'postCustomer'])->name('addCus');
 
+Route::get('/update/{id}', [CustomerController::class, 'updateCustomer'])->name('updateCus');
+Route::post('/update/{id}', [CustomerController::class, 'postUpdateCus'])->name('postUpdateCus');
+
+Route::get('/del/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete');
