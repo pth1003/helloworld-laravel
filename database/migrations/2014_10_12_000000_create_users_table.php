@@ -21,6 +21,11 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+//             $table->string('address', 50);
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('address');
         });
     }
 
