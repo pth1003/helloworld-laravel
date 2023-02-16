@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CustomerController;
-
+use App\Http\Controllers\OrmCustomerController;
 //Route::get('/', function () {
 //    return view('welcome');
 //}) -> name('HomeIndex');
@@ -46,3 +46,14 @@ Route::get('/update/{id}', [CustomerController::class, 'updateCustomer'])->name(
 Route::post('/update/{id}', [CustomerController::class, 'postUpdateCus'])->name('postUpdateCus');
 
 Route::get('/del/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete');
+
+
+
+//Router
+
+Route::prefix('customer')->group(function () {
+    Route::get('/', [OrmCustomerController::class, 'index'])->name('customer.index');
+    Route::get('/order', [OrmCustomerController::class, 'getOrder'])->name('customer.order');
+    Route::get('/product', [OrmCustomerController::class, 'getProduct'])->name('customer.product');
+    Route::get('/add', [OrmCustomerController::class, 'addCustomer'])->name('customer.add');
+});

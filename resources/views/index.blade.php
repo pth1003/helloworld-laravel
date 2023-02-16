@@ -1,16 +1,22 @@
 <html>
 <head>
     <title>List Customer</title>
+    <link rel="stylesheet"  href="{{asset('bootstrap/bootstrap.min.css')}}"/>
     <style>
         td {
             padding: 10px 20px;
+        }
+        .pagination svg{
+            font-size: 20px;
+            height: 40px;
+            width: 40px;
         }
     </style>
 </head>
 <body>
     <div class="list_customer">
         <h1>Customer List</h1>
-        <button><a href="{{route('add')}}">Add customer</a></button>
+       <a class="btn btn-primary" href="{{route('add')}}">Add customer</a>
         <table>
             <tr>
                 <th>STT</th>
@@ -22,7 +28,6 @@
                 <th>Update date</th>
                 <th>Delete</th>
                 <th>Edit</th>
-
             </tr>
             @foreach($customer as $key => $customerValue)
                 <tr>
@@ -38,9 +43,10 @@
                 </tr>
             @endforeach
         </table>
-        <div class="pagination">
-            {!! $customer->links() !!}
-        </div>
+            <ul class="pagination">
+               {!! $customer->links() !!}
+            </ul>
     </div>
+<script src="{{asset('bootstrap/bootstrap.min.css')}}"></script>
 </body>
 </html>

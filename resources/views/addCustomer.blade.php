@@ -1,4 +1,7 @@
 <html>
+<head>
+
+</head>
 <body>
 <h1>Add customer</h1>
 <form method="POST">
