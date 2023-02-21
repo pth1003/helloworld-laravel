@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class order extends Seeder
+class comment extends Seeder
 {
 
     /**
@@ -18,9 +18,10 @@ class order extends Seeder
 
     public function run()
     {
-            DB::table('order')->insert([
-                'customer_id' =>  '64',
-                'product_id' => '8'
+            DB::table('comment')->insert([
+                'title' =>  'Comment bai blog 2 +',
+                'content' => 'Cooment bai blog 2 +',
+                'post_id' => 2
             ]);
     }
 }

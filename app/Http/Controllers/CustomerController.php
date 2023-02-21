@@ -5,30 +5,30 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
+    /**
+     * Customer page list
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     function  index() {
-//        $customer = new Customer();
-//        $customerList = $customer->getCustomer();
         return view('index',[
             'customer'=>DB::table('customer')->paginate(10)
         ]);
     }
 
+    /**
+     * Add customer
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     function addCustomer() {
         return view('addCustomer');
     }
 
-    function postCustomer(Request $request) {
-//        $dataInsert = [
-//            $request->fullname,
-//            $request->cus_username,
-//            $request->password,
-//            $request->email,
-//            $request->address,
-//            date('Y-m-d H:i:s')
-//        ];
-//        $addCustomer = DB::insert('INSERT INTO customer(fullname,cus_username, password, email, address, created_at)
-////                        VALUES (?, ?, ?, ?, ?, ?)', $dataInsert);
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    function postCustomer(Request $request) {
         DB::table('customer')
             ->insert([
                 'fullname' => $request->fullname,
@@ -43,6 +43,7 @@ class CustomerController extends Controller
     }
 
     function updateCustomer($id) {
+        /** @var  $dataUpdate */
         $dataUpdate = DB::select('SELECT * FROM customer WHERE id=? ORDER BY  id DESC', [$id]);
         return view('/update', compact('dataUpdate'));
     }
