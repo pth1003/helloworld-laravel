@@ -17,14 +17,14 @@
     <h3>Pass word</h3>
     <input class="mb-3" type="password" placeholder="Enter password" name="password">
 
-    <h3>Default Address</h3>
-    <input class="mb-3" type="text" placeholder="Enter address" name="address">
+{{--    <h3>Default Address</h3>--}}
+{{--    <input class="mb-3" type="text" placeholder="Enter address" name="address">--}}
 
-    <h3>Home address</h3>
-    <input class="mb-3" type="text" placeholder="Enter address" name="address">
+{{--    <h3>Home address</h3>--}}
+{{--    <input class="mb-3" type="text" placeholder="Enter address" name="address">--}}
 
-    <h3>Company Address</h3>
-    <input class="mb-3" type="text" placeholder="Enter address" name="address">
+{{--    <h3>Company Address</h3>--}}
+{{--    <input class="mb-3" type="text" placeholder="Enter address" name="address">--}}
 
     <button class="btn btn-success" type="submit">Add customer</button>
     <a class="btn btn-dark" href="{{route('customer.index')}}">Back</a>

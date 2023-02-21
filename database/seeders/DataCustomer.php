@@ -24,6 +24,7 @@ class DataCustomer extends Seeder
             'email' =>'Customer'.$i.'@ninepoints.vn',
             'address' => 'Can Tho City '.$i ,
             'cus_username'=> 'username_customer'.$i,
+               
         ]);
        }
     }

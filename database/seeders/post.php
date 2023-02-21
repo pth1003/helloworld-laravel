@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class order extends Seeder
+class post extends Seeder
 {
 
     /**
@@ -18,9 +18,9 @@ class order extends Seeder
 
     public function run()
     {
-            DB::table('order')->insert([
-                'customer_id' =>  '64',
-                'product_id' => '8'
+            DB::table('post')->insert([
+                'title' =>  'Bai log thu 2',
+                'content' => 'Noi dung bai blog thu 2'
             ]);
     }
 }

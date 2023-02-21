@@ -18,7 +18,7 @@
     <h1>Customer List</h1>
     <div class="d-flex justify-content-around w-25">
         <a class="btn btn-success" href="{{route('customer.index')}}">Customer list</a>
-        <a class="btn btn-warning" href="{{route('customer.order')}}">Order list</a>
+        <a class="btn btn-warning" href="{{route('order.list')}}">Order list</a>
     </div>
     <table class="text-center">
         <tr>
@@ -38,7 +38,7 @@
         @endforeach
     </table>
     <ul class="pagination">
-        {!! $product->paginate() !!}
+        {!! $listProduct->links() !!}
 
     </ul>
 </div>

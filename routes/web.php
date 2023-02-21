@@ -49,11 +49,27 @@ Route::get('/del/{id}', [CustomerController::class, 'deleteCustomer'])->name('de
 
 
 
-//Router
-
+//Route Customer
 Route::prefix('customer')->group(function () {
     Route::get('/', [OrmCustomerController::class, 'index'])->name('customer.index');
     Route::get('/order', [OrmCustomerController::class, 'getOrder'])->name('customer.order');
-    Route::get('/product', [OrmCustomerController::class, 'getProduct'])->name('customer.product');
     Route::get('/add', [OrmCustomerController::class, 'addCustomer'])->name('customer.add');
+    Route::post('/add', [OrmCustomerController::class, 'inserCustomer'])->name('customer.insert');
+    Route::get('/del/{id}', [OrmCustomerController::class, 'deleteCustomer'])->name('customer.delete');
+
+});
+
+//Route Product
+Route::prefix('product')->group(function () {
+    Route::get('/', [OrmCustomerController::class, 'getProduct'])->name('product.list');
+});
+
+//Route Order
+Route::prefix('order')->group(function () {
+    Route::get('/', [OrmCustomerController::class, 'getOrder'])->name('order.list');
+});
+
+Route::prefix('comment')->group(function () {
+    Route::get('/', [OrmCustomerController::class, 'getCmt'])->name('comment.list');
+    Route::get('/post', [OrmCustomerController::class, 'getPost'])->name('comment.post');
 });
