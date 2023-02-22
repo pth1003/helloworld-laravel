@@ -15,8 +15,16 @@ class typeaddress extends Seeder
      */
     public function run()
     {
-            DB::table('typeaddress')->insert([
-                'typeAdd' => 'DefaultAddress'
+            DB::table('typeAddress')->insert([
+                'name_type' => 'DefaultAddress'
+            ]);
+
+            DB::table('typeAddress')->insert([
+                'name_type' => 'WorkAddress'
+            ]);
+
+            DB::table('typeAddress')->insert([
+                'name_type' => 'HomeAddress'
             ]);
     }
 }

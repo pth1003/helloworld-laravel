@@ -15,8 +15,8 @@ class Customer extends Model
     public $timestamps = true;
     protected $fillable = ['fullname', 'password', 'email', 'cus_username'];
 
-    public function order():HasMany {
-        return $this->hasMany(Order::class);
+    public function address():HasMany {
+        return $this->hasMany(Address::class);
     }
 
 }

@@ -9,7 +9,7 @@ class CustomerController extends Controller
      * Customer page list
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    function  index() {
+    public function  index() {
         return view('index',[
             'customer'=>DB::table('customer')->paginate(10)
         ]);
@@ -19,7 +19,7 @@ class CustomerController extends Controller
      * Add customer
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    function addCustomer() {
+    public function addCustomer() {
         return view('addCustomer');
     }
 
@@ -28,7 +28,7 @@ class CustomerController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    function postCustomer(Request $request) {
+    public function postCustomer(Request $request) {
         DB::table('customer')
             ->insert([
                 'fullname' => $request->fullname,
@@ -42,22 +42,23 @@ class CustomerController extends Controller
         return redirect()->route('index');
     }
 
-    function updateCustomer($id) {
+    public function updateCustomer($id) {
         /** @var  $dataUpdate */
         $dataUpdate = DB::select('SELECT * FROM customer WHERE id=? ORDER BY  id DESC', [$id]);
         return view('/update', compact('dataUpdate'));
     }
 
-    function postUpdateCus($id, Request $request) {
-        DB::table('customer')->where('id', $id)
-            ->update([
-                'fullname'=>$request->fullname,
-                'cus_username'=>$request->cus_username,
-                'email'=>$request->email,
-                'password'=>$request->password,
-                'address'=>$request->address
-            ]);
-        return redirect()->route('index');
+    public function postUpdateCus($id, Request $request) {
+    DB::table('customer')->where('id', $id)
+        ->update([
+            'fullname'=>$request->fullname,
+            'cus_username'=>$request->cus_username,
+            'email'=>$request->email,
+            'password'=>$request->password,
+            'address'=>$request->address
+        ]);
+
+    return redirect()->route('index');
     }
 
     function deleteCustomer($id) {
@@ -65,3 +66,4 @@ class CustomerController extends Controller
         return redirect()->route('index');
     }
 }
+

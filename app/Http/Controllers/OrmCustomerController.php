@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Address;
 use App\Models\Comment;
+use App\Models\typeAddress;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use App\Models\Customer;
@@ -35,22 +37,20 @@ class OrmCustomerController extends Controller
      * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function getOrder() {
-//        $listOrder = Order::paginate(10);
-        $arrName = [];
-        $arrPro  = [];
-        $arrOrder = [];
-        $order = Order::all();
-        $countOrder = count($order);
-        for($i=1; $i<=$countOrder; $i++){
-            $order = Order::find($i);
-            $fullName = $order->customer->fullname;
-            $namePro  = $order->product->name;
-            array_push($arrName, $fullName);
-            array_push($arrPro, $namePro);
-        }
-        array_push($arrOrder, $arrName, $arrPro);
-//        dd($arrOrder[0]);
-        return view('order.index', compact('arrOrder'));
+//        $orderFullname = Order::find(1)->with('customer', 'product')->get();
+//        $orderProduct = Order::find(2)->product->toArray();
+//        $orderProduct_ = Order::find(2)->customer->toArray();
+//        $order = Order::all();
+//        dd($order);
+//        $arr = [];
+//        array_push($arr, $orderProduct, $orderProduct_);
+//        $order = Order::all();
+//        $order->load('customer', 'product');
+//        dd($order, $orderProduct);
+
+        $customer = Customer::find(64)->order;
+        dd($customer);
+        return view('order.index', compact('customer'));
 
     }
 
@@ -63,7 +63,7 @@ class OrmCustomerController extends Controller
             'cus_username'=>$request->cus_username
         ];
 //        return dd($dataInsert);
-        $post = Customer::create($dataInsert);
+        Customer::create($dataInsert);
         return redirect()->route('customer.index');
     }
 
@@ -71,21 +71,18 @@ class OrmCustomerController extends Controller
         return view('customer.addCustomer');
     }
 
-    public function getCmt() {
-//        $post = Post::where('id',2)->get();
-//        dd($post);
-        $comment = Post::find(1)->comments;
-        return view('comment.index', compact('comment'));
-    }
-
-    public function getPost(){
-        $comment = Comment::find(3); //tim id cua bang comment
-        return $comment->post;
-    }
-
     public function deleteCustomer($id) {
-        Customer::where('id', $id)->delete();
+        Customer::find($id)->delete();
         return redirect()->route('customer.index');
+    }
+
+    public function getAddress($id) {
+        $customer = Customer::find($id)->address;
+
+
+        //tu bang dia chi lay id = 3 -> kiem tra typeaddress_id = bao nhiu => ten type address
+        //$address = address::find(3)->typeAddress;
+       return view('customer.address', compact('customer'));
     }
 
 }

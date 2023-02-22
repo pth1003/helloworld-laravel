@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('typeAddress', function (Blueprint $table) {
-            $table->id();
-            $table->string('typeAdd',20);
+        Schema::table('address', function (Blueprint $table) {
+            $table->foreignId('typeAddress_id')->constrained('typeAddress');
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('typeAddress');
+        Schema::drop('address');
     }
 };

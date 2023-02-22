@@ -17,7 +17,7 @@
     <div class="list_customer">
         <h1>Customer List</h1>
        <a class="btn btn-primary" href="{{route('add')}}">Add customer</a>
-        <table>
+        <table class="table">
             <tr>
                 <th>STT</th>
                 <th>Full Name</th>

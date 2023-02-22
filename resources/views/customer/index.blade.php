@@ -21,13 +21,13 @@
         <a class="btn btn-success" href="{{route('product.list')}}">Product list</a>
         <a class="btn btn-warning" href="{{route('order.list')}}">Order list</a>
     </div>
-    <table>
+    <table class="table table-bordered mt-3 text-center">
         <tr>
             <th>STT</th>
             <th>Full Name</th>
             <th>User name</th>
             <th>Email</th>
-{{--            <th>Address</th>--}}
+            <th>Address</th>
             <th>Create date</th>
             <th>Update date</th>
             <th>Delete</th>
@@ -40,8 +40,7 @@
                     <td>{{ $customer->fullname }}</td>
                     <td>{{ $customer->cus_username }}</td>
                     <td>{{ $customer->email }}</td>
-{{--                    <td>{{ $customer->address }}</td>--}}
-                    <td>{{ $customer->created_at }}</td>
+                    <td><a href="{{route('customer.address', ['id'=>$customer->id])}}">Xem địa chỉ</a></td>
                     <td>{{ $customer->updated_at }}</td>
                     <td><a onclick="return confirm('delete confirm')" href="{{route('customer.delete', ['id'=>$customer->id])}}">Delete</a></td>
                     <td><a href="{{route('updateCus', ['id'=>$customer->id])}}">Update</a></td>

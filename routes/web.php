@@ -56,6 +56,7 @@ Route::prefix('customer')->group(function () {
     Route::get('/add', [OrmCustomerController::class, 'addCustomer'])->name('customer.add');
     Route::post('/add', [OrmCustomerController::class, 'inserCustomer'])->name('customer.insert');
     Route::get('/del/{id}', [OrmCustomerController::class, 'deleteCustomer'])->name('customer.delete');
+    Route::get('/address/{id}', [OrmCustomerController::class, 'getAddress'])->name('customer.address');
 
 });
 

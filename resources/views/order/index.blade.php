@@ -27,11 +27,11 @@
             <th>Product Name</th>
 
         </tr>
-        @foreach($arrOrder as $key=>$order)
+        @foreach($customer as $key=>$order)
             <tr>
 {{--                <td>{{ $product[0] }}</td>--}}
-                <td>{{ $order[0]}}</td>
-                <td>{{ $order[1]}}</td>
+{{--                <td>{{ $order->name }}</td>--}}
+                <td>{{ $order->fullname }}</td>
             </tr>
         @endforeach
     </table>
