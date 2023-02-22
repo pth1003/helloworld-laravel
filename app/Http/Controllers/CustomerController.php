@@ -66,4 +66,3 @@ class CustomerController extends Controller
         return redirect()->route('index');
     }
 }
-

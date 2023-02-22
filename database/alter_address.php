@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('address_name',100);
             $table->foreignId('customer_id')->constrained('customer')
             ->onDelete('cascade');
-            $table->foreignId('typeAddress_id')->constrained('typeAddress')
-                ->onDelete('cascade');
         });
     }
 

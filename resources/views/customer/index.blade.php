@@ -27,11 +27,11 @@
             <th>Full Name</th>
             <th>User name</th>
             <th>Email</th>
-            <th>Address</th>
+            <th>Xem</th>
             <th>Create date</th>
             <th>Update date</th>
             <th>Delete</th>
-            <th>Edit</th>
+            <th>Default Address</th>
         </tr>
         @if($listCustomer->getCollection()->count() > 0)
             @foreach($listCustomer as $key => $customer)
@@ -43,7 +43,8 @@
                     <td><a href="{{route('customer.address', ['id'=>$customer->id])}}">Xem địa chỉ</a></td>
                     <td>{{ $customer->updated_at }}</td>
                     <td><a onclick="return confirm('delete confirm')" href="{{route('customer.delete', ['id'=>$customer->id])}}">Delete</a></td>
-                    <td><a href="{{route('updateCus', ['id'=>$customer->id])}}">Update</a></td>
+                    <td><a href="{{route('customer.update', ['id'=>$customer->id])}}">Update</a></td>
+                    <th>Default Address</th>
                 </tr>
             @endforeach
         @endif

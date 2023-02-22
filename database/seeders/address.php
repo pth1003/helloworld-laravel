@@ -16,14 +16,18 @@ class address extends Seeder
     public function run()
     {
         DB::table('address')->insert([
-            'address_name' =>  'Trà Vinh',
-            'customer_id' => '42'
+            'address_name' =>  'Hà Nội',
+            'customer_id' => '63',
+            'typeAddress_id' => '2',
+            'default_address' => 0
         ]);
 
 
         DB::table('address')->insert([
-            'address_name' =>  'Hồ Chí Minh',
-            'customer_id' => '42'
+            'address_name' =>  'Cà Mau',
+            'customer_id' => '66',
+            'typeAddress_id' => '2',
+            'default_address' => 0
         ]);
     }
 }

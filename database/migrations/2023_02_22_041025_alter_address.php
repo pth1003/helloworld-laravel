@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
-            $table->id();
-            $table->string('address_name',100);
-            $table->foreignId('customer_id')->constrained('customer')
-            ->onDelete('cascade');
-            $table->foreignId('typeAddress_id')->constrained('typeAddress')
-                ->onDelete('cascade');
+        Schema::table('address', function (Blueprint $table) {
+           $table->boolean('default_address')->default(0);
         });
     }
 
@@ -31,5 +26,6 @@ return new class extends Migration
     public function down()
     {
         Schema::drop('address');
+
     }
 };
