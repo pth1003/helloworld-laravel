@@ -19,4 +19,7 @@ class Address extends Model
         return $this->belongsTo(TypeAddress::class, 'typeAddress_id', 'id');
     }
 
+    public function customer():BelongsTo {
+        return $this->belongsTo(Customer::class, 'customer_id', 'id');
+    }
 }

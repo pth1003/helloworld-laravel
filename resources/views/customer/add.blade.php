@@ -17,17 +17,11 @@
     <h3>Pass word</h3>
     <input class="mb-3 form-control" type="password" placeholder="Enter password" name="password">
 
-
     <h3> address</h3>
     <input class="mb-3 form-control" type="text" placeholder="Enter address" name="address">
     @foreach($typeAddress as $index => $type)
-
-        <input type="checkbox" name="typeAdd[]" value="{{$type->id}}" @if($index==1) checked @endif > {{$type->name_type}}
-
+        <input type="checkbox" name="typeAdd[]" value="{{$type->id}}" @if($index==0) checked @endif > {{$type->name_type}}
     @endforeach
-    {{--    <h3>Work Address</h3>--}}
-    {{--    <input class="mb-3 form-control" type="text" placeholder="Enter address" name="WorkAddress">--}}
-
     <button class="btn btn-success" type="submit">Add customer</button>
     <a class="btn btn-dark" href="{{route('customer.index')}}">Back</a>
     @csrf

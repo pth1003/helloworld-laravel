@@ -13,6 +13,6 @@ class TypeAddress extends Model
     protected $table = 'typeAddress';
 
     public function address():HasMany {
-        return $this->hasMany(Address::class);
+        return $this->hasMany(Address::class, 'id');
     }
 }

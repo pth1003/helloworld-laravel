@@ -10,6 +10,7 @@ use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Post;
+use function Sodium\add;
 
 class OrmCustomerController extends Controller
 {
@@ -73,15 +74,6 @@ class OrmCustomerController extends Controller
         }
     }
 
-
-    /**
-     * Show from insert customer
-     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function addCustomer() {
-        return view('customer.add');
-    }
-
     /**
      * Get id customer
      * @param $id
@@ -93,7 +85,6 @@ class OrmCustomerController extends Controller
         Customer::find($id)->delete();
         return redirect()->route('customer.index');
     }
-
 
     /**
      * Get id customer
@@ -115,22 +106,16 @@ class OrmCustomerController extends Controller
                 'email'=>$request->email,
                 'cus_username'=>$request->cus_username,
             ];
-
-            $updateAddress = [
-                'address_name'=>$request->WorkAddress,
-            ];
-
-            $updateAddress1 = [
-                'address_name'=>$request->HomeAddress,
-            ];
             Customer::find($id)->update($dataUpdate);
-            $add = Address::where('customer_id','typeAddress_id',$id,2)->update($updateAddress);
-            $add1 = Address::where('customer_id','typeAddress_id',$id,3)->update($updateAddress1);
-            dd($add, $add1);
+            $address = Address::where('customer_id', $id)->get();
+            foreach($address as $add){
+                $idType = $add->typeAddress_id;
+                $nameAddress = $request->$idType;
+                Address::where(['customer_id'=>$id, 'typeAddress_id'=>$idType])->update(['address_name'=> $nameAddress]);
+            };
             return redirect()->route('customer.index');
         }
     }
-
 
     /**
      * Get address of customer

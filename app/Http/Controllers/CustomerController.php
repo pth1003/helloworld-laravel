@@ -57,7 +57,6 @@ class CustomerController extends Controller
             'password'=>$request->password,
             'address'=>$request->address
         ]);
-
     return redirect()->route('index');
     }
 
