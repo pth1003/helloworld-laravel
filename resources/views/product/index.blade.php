@@ -20,9 +20,9 @@
         <a class="btn btn-success" href="{{route('customer.index')}}">Customer list</a>
         <a class="btn btn-warning" href="{{route('order.list')}}">Order list</a>
     </div>
-    <table class="text-center">
+    <table class="text-center table-bordered mt-3">
         <tr>
-            <th>Product id</th>
+            <th>STT</th>
             <th>Name</th>
             <th>Quantiy</th>
             <th>Price</th>
@@ -30,7 +30,7 @@
         </tr>
         @foreach($listProduct as $key => $product)
             <tr>
-                <td>{{ $product->id }}</td>
+                <td>{{ ++$key}}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->quantity }}</td>
                 <td>{{ $product->price }}$</td>

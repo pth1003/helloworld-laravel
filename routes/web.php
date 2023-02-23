@@ -23,6 +23,8 @@ Route::prefix('customer')->group(function () {
     Route::get('/del/{id}', [OrmCustomerController::class, 'deleteCustomer'])->name('customer.delete');
     Route::get('/address/{id}', [OrmCustomerController::class, 'getAddress'])->name('customer.address');
     Route::match(['get', 'post'],'update/{id}', [OrmCustomerController::class, 'updateCustomer'])->name('customer.update');
+    Route::match(['get', 'post'],'addAdr/{id}', [OrmCustomerController::class, 'addAddress'])->name('customer.addAdr');
+    Route::match(['get', 'post'],'login', [OrmCustomerController::class, 'login'])->name('customer.login');
 });
 
 //Route Product

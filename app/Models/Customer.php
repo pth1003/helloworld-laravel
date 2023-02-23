@@ -14,9 +14,18 @@ class Customer extends Model
     public $timestamps = true;
     protected $fillable = ['fullname', 'password', 'email', 'cus_username'];
 
+    protected $appends = ['default_address'];
 
     public function address():HasMany {
         return $this->hasMany(Address::class);
     }
 
+    public function getDefaultAddressAttribute()
+    {
+        $adr = $this->address->first();
+        if ($adr) {
+            return $adr->address_name;
+        }
+        return '';
+    }
 }

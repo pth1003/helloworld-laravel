@@ -20,18 +20,19 @@
         <a class="btn btn-success" href="{{route('customer.index')}}">Customer list</a>
         <a class="btn btn-warning" href="{{route('order.list')}}">Order list</a>
     </div>
-    <table class="text-center w-25">
+    <table class="text-center w-25 table-bordered mt-3">
         <tr>
 {{--            <th>Order id</th>--}}
             <th>Customer name</th>
             <th>Product Name</th>
+            <th>Total</th>
 
         </tr>
-        @foreach($customer as $key=>$order)
+        @foreach($orders as $order)
             <tr>
-{{--                <td>{{ $product[0] }}</td>--}}
-{{--                <td>{{ $order->name }}</td>--}}
-                <td>{{ $order->fullname }}</td>
+                <td>{{ $order->customer->fullname }}</td>
+                <td>{{ $order->product->name }}</td>
+                <td>{{ $order->total }}</td>
             </tr>
         @endforeach
     </table>
