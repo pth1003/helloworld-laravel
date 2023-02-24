@@ -13,6 +13,8 @@ use App\Models\Order;
 use App\Models\Post;
 use function Sodium\add;
 use Hash;
+use Auth;
+//use AuthenticatesUsers;
 
 class OrmCustomerController extends Controller
 {
@@ -66,11 +68,11 @@ class OrmCustomerController extends Controller
                 'password' => 'required|min:6',
                 'address' => 'required',
             ], [
-                'fullname.required' => 'Vui lòng nhập tên đầy đủ',
-                'cus_username.required' => 'Vui lòng nhập username',
-                'password.required' => 'Vui lòng nhập passwork',
-                'password.min' => 'Passwork phải có ít nhất 6 kí tự',
-                'address.required' => 'Vui lòng nhập địa chỉ',
+                    'fullname.required' => 'Vui lòng nhập tên đầy đủ',
+                    'cus_username.required' => 'Vui lòng nhập username',
+                    'password.required' => 'Vui lòng nhập passwork',
+                    'password.min' => 'Passwork phải có ít nhất 6 kí tự',
+                    'address.required' => 'Vui lòng nhập địa chỉ',
                 ]
             );
 
@@ -155,18 +157,35 @@ class OrmCustomerController extends Controller
         } else {
             $idTypes = $request->type;
             foreach ($idTypes as $idType) {
-                $add = Address::create(['address_name' => $request->address, 'customer_id' => $id, 'typeAddress_id' => $idType]);
+                Address::create(['address_name' => $request->address, 'customer_id' => $id, 'typeAddress_id' => $idType]);
             }
             return redirect()->route('customer.index');
         }
     }
 
-    public function login(Request $request) {
-        if($request->method() == 'GET'){
+    public function login(Request $request)
+    {
+        if ($request->method() == 'GET') {
             return view('customer.login');
-        }else{
-
+        } else {
+            $infoLogin = [
+                'cus_username' => $request->cus_username,
+                'password' => $request->password
+            ];
+            $login = Auth::guard('customer')->attempt($infoLogin);
+            if ($login) {
+                $fullName = Auth::guard('customer')->user()->fullname;
+                return redirect()->route('customer.index');
+            }
+            return redirect()->route('customer.login')->with('error', 'Dang nhap khong thanh cong');
         }
     }
 
+    public function logout(Request $request)
+    {
+        Auth::guard('customer')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('customer.login');
+    }
 }

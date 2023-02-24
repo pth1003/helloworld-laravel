@@ -9,16 +9,16 @@
     <input class="mb-3 form-gr" type="text" placeholder="Enter full name" name="fullname" value="{{old('fullname')}}">
     <span></span>
     <h3>User name</h3>
-    <input class="mb-3 form-control" type="text" placeholder="Enter user name" name="cus_username" >
+    <input class="mb-3 form-control" type="text" placeholder="Enter user name" name="cus_username" value="{{old('cus_username')}}">
 
     <h3>Email</h3>
-    <input class="mb-3 form-control" type="text" placeholder="Enter email" name="email">
+    <input class="mb-3 form-control" type="text" placeholder="Enter email" name="email" value="{{old('email')}}">
 
     <h3>Pass word</h3>
-    <input class="mb-3 form-control" type="password" placeholder="Enter password" name="password">
+    <input class="mb-3 form-control" type="password" placeholder="Enter password" name="password" value="{{old('password')}}">
 
     <h3> address</h3>
-    <input class="mb-3 form-control" type="text" placeholder="Enter address" name="address">
+    <input class="mb-3 form-control" type="text" placeholder="Enter address" name="address" value="{{old('address')}}">
     <button class="btn btn-success" type="submit">Add customer</button>
     <a class="btn btn-dark" href="{{route('customer.index')}}">Back</a>
 

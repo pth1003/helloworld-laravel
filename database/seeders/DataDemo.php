@@ -28,9 +28,11 @@ class DataDemo extends Seeder
 //        }
 
         DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
+            'name' => 'Pham Trung Hau',
+            'email' => 'pthau123@gmail.com',
+            'address'=>'Vinh chau, Soc Trang',
+            'password' => Hash::make('10032000'),
+            'username' => 'pthau'
         ]);
     }
 }

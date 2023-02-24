@@ -5,8 +5,9 @@
 <body class="d-flex justify-content-center flex-column align-items-center">
 <h1>Login</h1>
 <form method="POST" class="w-25">
-    <h3>Full name</h3>
-    <input class="mb-3 form-control" type="text" placeholder="Enter full name" name="fullname" value="{{old('fullname')}}">
+    @csrf
+    <h3>Username</h3>
+    <input class="mb-3 form-control" type="text" placeholder="Enter full name" name="cus_username">
     <h3>Pass word</h3>
     <input class="mb-3 form-control" type="password" placeholder="Enter password" name="password">
     <button class="btn btn-success w-100" type="submit">Login</button>
@@ -21,7 +22,12 @@
             </ul>
         </div>
     @endif
-    @csrf
+
 </form>
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{session('error')}}
+    </div>
+@endif
 </body>
 </html>

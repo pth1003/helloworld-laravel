@@ -11,12 +11,4 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
     public $timestamps = true;
-
-//    public function customer():BelongsTo {
-//        return $this->belongsTo(Customer::class);
-//    }
-//
-//    public function order():BelongsTo {
-//        return $this->belongsTo(Order::class);
-//    }
 }
