@@ -21,7 +21,7 @@ Route::get('/welcome', function () {
 //Route Customer
 Route::prefix('customer')->group(function () {
     Route::match(['get', 'post'], 'login', [OrmCustomerController::class, 'login'])->name('customer.login');
-    Route::middleware('checkLogin')->group(function () {
+        Route::middleware('checkLogin')->group(function () {
         Route::get('/', [OrmCustomerController::class, 'index'])->name('customer.index');
         Route::get('/order', [OrmCustomerController::class, 'getOrder'])->name('customer.order');
         Route::match(['get', 'post'], '/add', [OrmCustomerController::class, 'inserCustomer'])->name('customer.add');
@@ -47,4 +47,11 @@ Route::prefix('order')->group(function () {
 Route::prefix('comment')->group(function () {
     Route::get('/', [OrmCustomerController::class, 'getCmt'])->name('comment.list');
     Route::get('/post', [OrmCustomerController::class, 'getPost'])->name('comment.post');
+});
+
+
+
+//Vue Js
+Route::get('vue', function () {
+    return view('vue');
 });

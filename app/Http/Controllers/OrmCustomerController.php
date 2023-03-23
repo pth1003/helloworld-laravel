@@ -11,7 +11,6 @@ use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Post;
-use function Sodium\add;
 use Hash;
 use Auth;
 //use AuthenticatesUsers;
@@ -61,18 +60,19 @@ class OrmCustomerController extends Controller
         if ($request->method() == 'GET') {
             return view('customer.add', compact('typeAddress'));
         } else {
-            $request->validate([
+                $request->validate([
                 'fullname' => 'required',
                 'cus_username' => 'required',
-                'fullname' => 'required',
                 'password' => 'required|min:6',
                 'address' => 'required',
+                'email' => 'required',
             ], [
                     'fullname.required' => 'Vui lòng nhập tên đầy đủ',
                     'cus_username.required' => 'Vui lòng nhập username',
                     'password.required' => 'Vui lòng nhập passwork',
                     'password.min' => 'Passwork phải có ít nhất 6 kí tự',
                     'address.required' => 'Vui lòng nhập địa chỉ',
+                    'email.required' => 'Vui lòng nhập email',
                 ]
             );
 
@@ -84,7 +84,6 @@ class OrmCustomerController extends Controller
                 'id_customer' => $request->id,
             ];
             $customer = Customer::create($dataInsert);
-//            $typeAdds = $request->typeAdd;
             Address::create([
                 'address_name' => $request->address,
                 'typeAddress_id' => 1,
@@ -163,6 +162,11 @@ class OrmCustomerController extends Controller
         }
     }
 
+    /**
+     * Login customer
+     * @param Request $request
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
     public function login(Request $request)
     {
         if ($request->method() == 'GET') {
@@ -181,6 +185,11 @@ class OrmCustomerController extends Controller
         }
     }
 
+    /**
+     * Logout customer
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout(Request $request)
     {
         Auth::guard('customer')->logout();
