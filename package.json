@@ -18,7 +18,9 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@vee-validate/rules": "^4.8.4",
         "animate.css": "^4.1.1",
-        "pinia": "^2.0.33"
+        "pinia": "^2.0.33",
+        "vee-validate": "^4.8.4"
     }
 }
