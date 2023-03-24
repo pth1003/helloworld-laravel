@@ -5,7 +5,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrmCustomerController;
 
-Route::get('/', [CustomerController::class, 'index'])->name('index');
+Route::get('/laravel', [CustomerController::class, 'index'])->name('index');
 
 Route::get('/add', [CustomerController::class, 'addCustomer'])->name('add');
 Route::post('/add', [CustomerController::class, 'postCustomer'])->name('addCus');
@@ -52,6 +52,6 @@ Route::prefix('comment')->group(function () {
 
 
 //Vue Js
-Route::get('vue', function () {
+Route::get('/{any}', function () {
     return view('vue');
-});
+})->where("any", '.*');
