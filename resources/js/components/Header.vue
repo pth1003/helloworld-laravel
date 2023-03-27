@@ -12,6 +12,7 @@
                     </li>
                     <li>
                         <router-link to="/manage">Manage</router-link>
+                        <router-view></router-view>
 <!--                        <a class="px-2 text-white" href="#">Manage</a>-->
                     </li>
                 </ul>
