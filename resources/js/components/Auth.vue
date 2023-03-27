@@ -178,7 +178,7 @@ export default {
                 email: 'required|email',
                 age: 'required|min_value:18|max_value:100',
                 password:'required|min:6|max:30',
-                confirm_password: 'confirmed:@password',
+                confirm_password: 'password_mismatch:@password',
                 country: 'required|excluded:Antarctica',
                 tos:'required'
             },

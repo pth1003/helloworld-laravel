@@ -279,8 +279,9 @@
 <script>
 import Header from "./components/Header.vue";
 import Auth from "./components/Auth.vue";
+import Manage from "./views/Manage.vue";
 export default {
-    components: {Header, Auth}
+    components: {Header, Auth, Manage}
 }
 </script>
 
