@@ -8,12 +8,14 @@
                 <ul class="flex flex-row mt-1">
                     <!-- Navigation Links -->
                     <li>
+                        <router-link class="px-2 text-white" to="/">Home</router-link>
+                    </li>
+                    <li>
                         <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModel">Login / Register</a>
                     </li>
                     <li>
-                        <router-link to="/manage">Manage</router-link>
-                        <router-view></router-view>
-<!--                        <a class="px-2 text-white" href="#">Manage</a>-->
+                        <router-link class="px-2 text-white" :to="{name: 'manage'}">Manage</router-link>
+<!--                        <router-view></router-view>-->
                     </li>
                 </ul>
             </div>

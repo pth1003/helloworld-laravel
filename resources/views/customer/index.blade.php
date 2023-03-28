@@ -16,7 +16,6 @@
 </head>
 <body>
 <div class="list_customer">
-    <h3>Xin chao: {{Auth::guard('customer')->user()->fullname}}</h3>
     <div class="d-flex justify-content-between align-items-center">
         <h1>Customer List</h1>
         <a class="btn btn-sm btn-warning" href="{{route('customer.logout')}}">Logout</a>

@@ -5,7 +5,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrmCustomerController;
 
-Route::get('/', [CustomerController::class, 'index'])->name('index');
+Route::get('/s', [CustomerController::class, 'index'])->name('index');
 
 Route::get('/add', [CustomerController::class, 'addCustomer'])->name('add');
 Route::post('/add', [CustomerController::class, 'postCustomer'])->name('addCus');
@@ -21,7 +21,7 @@ Route::get('/welcome', function () {
 //Route Customer
 Route::prefix('customer')->group(function () {
     Route::match(['get', 'post'], 'login', [OrmCustomerController::class, 'login'])->name('customer.login');
-        Route::middleware('checkLogin')->group(function () {
+//        Route::middleware('checkLogin')->group(function () {
         Route::get('/', [OrmCustomerController::class, 'index'])->name('customer.index');
         Route::get('/order', [OrmCustomerController::class, 'getOrder'])->name('customer.order');
         Route::match(['get', 'post'], '/add', [OrmCustomerController::class, 'inserCustomer'])->name('customer.add');
@@ -30,7 +30,7 @@ Route::prefix('customer')->group(function () {
         Route::match(['get', 'post'], 'update/{id}', [OrmCustomerController::class, 'updateCustomer'])->name('customer.update');
         Route::match(['get', 'post'], 'addAdr/{id}', [OrmCustomerController::class, 'addAddress'])->name('customer.addAdr');
         Route::get('/logout', [OrmCustomerController::class, 'logout'])->name('customer.logout');
-    });
+//    });
 });
 
 //Route Product
@@ -52,6 +52,11 @@ Route::prefix('comment')->group(function () {
 
 
 //Vue Js
-Route::get('music-pinia', function () {
+Route::get('/{any}', function () {
     return view('vue');
-});
+})->where('any', '.*');
+
+
+//Route::get('/music-pinia', function () {
+//    return view('vue');
+//});
