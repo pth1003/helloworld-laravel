@@ -8,13 +8,16 @@
                 <ul class="flex flex-row mt-1">
                     <!-- Navigation Links -->
                     <li>
+                        <router-link class="px-2 text-white" to="/">Home</router-link>
+                    </li>
+                    <li>
+                        <a class="px-2 text-white" href="#">Product</a>
+                    </li>
+                    <li>
                         <a class="px-2 text-white" href="#">Login</a>
                     </li>
                     <li>
                         <a class="px-2 text-white" href="#">Register</a>
-                    </li>
-                    <li>
-                        <a class="px-2 text-white" href="#">Product</a>
                     </li>
                 </ul>
             </div>

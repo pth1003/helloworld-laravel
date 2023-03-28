@@ -1,12 +1,22 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ShoeList from "../views/ShoeList.vue";
 import ShoeDetail from "../views/ShoeDetail.vue";
+import Home from "../views/Home.vue";
 const routes = [
     {
         path: '/shoe-list',
         name:'shoe-list',
         component: ShoeList
-    }
+    },
+    {
+        path: '/',
+        name:'home',
+        component: Home
+    },
+    {
+        path: '/shoe',
+        redirect: {name : 'home'}
+    },
 ]
 
 const router = createRouter({
