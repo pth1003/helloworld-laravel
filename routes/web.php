@@ -52,6 +52,6 @@ Route::prefix('comment')->group(function () {
 
 
 //Vue Js
-Route::get('music-pinia', function () {
+Route::get('customer-api', function () {
     return view('vue');
 });
