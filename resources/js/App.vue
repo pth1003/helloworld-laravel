@@ -1,6 +1,7 @@
 <template>
     <body class="bg-gray-100 font-sans">
     <Header></Header>
+    <Menu></Menu>
     <router-view></router-view>
 
     <!-- Player -->
@@ -45,9 +46,10 @@
 <script>
 import Header from "./components/Header.vue";
 import Auth from "./components/Auth.vue";
+import Menu from "./components/Menu.vue";
 import axios from "axios";
 export default {
-    components: {Header, Auth},
+    components: {Header, Auth, Menu},
 
     created() {
         axios.get('https://jsonplaceholder.typicode.com/todos/1')
