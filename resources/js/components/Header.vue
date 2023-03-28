@@ -1,39 +1,23 @@
 <template>
-    <header id="header" class="bg-gray-700">
-        <nav class="container mx-auto flex justify-start items-center px-5 px-4">
+    <header id="header" class="bg-blue-400">
+        <nav class="container mx-auto flex justify-start items-center py-5 px-4">
             <!-- App Name -->
-            <a class="text-white font-bold uppercase text-2xl mr-4" href="#">Music</a>
+            <a class="text-white font-bold uppercase text-2xl mr-4" href="#">SHOE</a>
             <div class="flex flex-grow items-center">
                 <!-- Primary Navigation -->
                 <ul class="flex flex-row mt-1">
                     <!-- Navigation Links -->
                     <li>
-                        <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModel">Login / Register</a>
+                        <a class="px-2 text-white" href="#">Login</a>
                     </li>
                     <li>
-                        <router-link to="/manage">Manage</router-link>
-                        <router-view></router-view>
-<!--                        <a class="px-2 text-white" href="#">Manage</a>-->
+                        <a class="px-2 text-white" href="#">Register</a>
+                    </li>
+                    <li>
+                        <a class="px-2 text-white" href="#">Product</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
 </template>
-
-<script>
-import {mapStores , mapState, mapWritableState} from "pinia";
-import useModelStore from "./stores/modal"
-
-export default {
-    computed: {
-        ...mapStores(useModelStore)
-    },
-
-    methods: {
-        toggleAuthModel() {
-            this.modalStore.isOpen = !this.modalStore.isOpen
-        }
-    }
-}
-</script>

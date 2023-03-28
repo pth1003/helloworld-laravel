@@ -1,9 +1,13 @@
 <template>
-   <router-link to="/list-user">List User</router-link>
+    <Header></Header>
     <router-view></router-view>
 </template>
 
 <script>
+import Header from "./components/Header.vue";
 export default {
+    components: {
+        Header
+    }
 }
 </script>
