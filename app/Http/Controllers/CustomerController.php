@@ -64,4 +64,6 @@ class CustomerController extends Controller
         DB::table('customer')->where('id', '=', $id)->delete();
         return redirect()->route('index');
     }
+
+
 }

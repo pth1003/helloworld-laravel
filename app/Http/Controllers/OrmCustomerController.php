@@ -197,4 +197,9 @@ class OrmCustomerController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('customer.login');
     }
+
+    public function editShoe()
+    {
+        echo 123;
+    }
 }
