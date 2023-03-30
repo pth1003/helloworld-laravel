@@ -14,6 +14,9 @@
             >
             </results>
     </div>
+       <h1  v-if="flag" class="animate__animated animate__bounce">An animated element</h1>
+    <button @click="flag = !flag">Click</button>
+
 </template>
 
 
@@ -32,6 +35,7 @@ export default {
 
     data() {
         return {
+            flag: false,
             questionsAnsweered: 0,
             totalCorrect: 0,
             questions: [
