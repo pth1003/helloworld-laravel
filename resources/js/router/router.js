@@ -3,6 +3,7 @@ import ShoeList from "../views/ShoeList.vue";
 import ShoeDetail from "../views/ShoeDetail.vue";
 import ShoeEdit from "../views/ShoeEdit.vue";
 import Home from "../views/Home.vue";
+import ShoeAdd from "../views/ShoeAdd.vue";
 const routes = [
     {
         path: '/shoe-list',
@@ -27,6 +28,11 @@ const routes = [
     {
         path: '/shoe',
         redirect: {name : 'home'}
+    },
+    {
+        path: '/shoe-add',
+        name:'shoe-add',
+        component: ShoeAdd
     },
 ]
 

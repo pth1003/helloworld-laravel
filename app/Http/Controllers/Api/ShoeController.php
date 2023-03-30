@@ -73,7 +73,8 @@ class ShoeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo (123);
+        $shoe = Shoe::find($id);
+        dd($request->all());
     }
 
     /**

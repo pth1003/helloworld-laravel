@@ -19,6 +19,9 @@
                     <li>
                         <a class="px-2 text-white" href="#">Register</a>
                     </li>
+                    <li>
+                        <router-link class="px-2 text-white" :to="{name: 'shoe-add'}">Add Shoe</router-link>
+                    </li>
                 </ul>
             </div>
         </nav>

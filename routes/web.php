@@ -51,6 +51,6 @@
 
 
 //Vue Js
-Route::get('shoe', function () {
+Route::get('/{any}', function () {
     return view('vue');
-});
+})->where('any', '.*');

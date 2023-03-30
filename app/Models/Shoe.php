@@ -11,4 +11,5 @@ use mysql_xdevapi\Table;
 class Shoe extends Authenticatable
 {
    protected $table = 'shoes';
+    protected $fillable = ['name', 'price', 'quantity', 'image'];
 }
