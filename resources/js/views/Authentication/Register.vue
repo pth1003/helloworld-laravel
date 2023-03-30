@@ -1,10 +1,11 @@
 <template>
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-stone-100 flex justify-center items-center flex-col">
         <p class="text-3xl text-blue-600">REGISTER</p>
-        <form class="w-5/12">
+        <vee-form class="w-5/12" :validation-schema="schema">
             <div class="mb-3">
                 <label class="inline-block mb-2">Username</label>
-                <input
+                <vee-field
+                    name="username"
                     type="text"
                     class=" w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Email"
@@ -12,7 +13,8 @@
             </div>
             <div class="mb-3">
                 <label class="inline-block mb-2">Fullname</label>
-                <input
+                <vee-field
+                    name="fullname"
                     type="text"
                     class=" w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Email"
@@ -21,7 +23,8 @@
             <!-- Email -->
             <div class="mb-3">
                 <label class="inline-block mb-2">Email</label>
-                <input
+                <vee-field
+                    name="email"
                     type="email"
                     class=" w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Email"
@@ -30,7 +33,8 @@
             <!-- Password -->
             <div class="mb-3">
                 <label class="inline-block mb-2">Password</label>
-                <input
+                <vee-field
+                    name="password"
                     type="password"
                     class=" w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Password"
@@ -38,7 +42,8 @@
             </div>
             <div class="mb-3">
                 <label class="inline-block mb-2">Password Confirm</label>
-                <input
+                <vee-field
+                    name="repassword"
                     type="password"
                     class=" w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Password"
@@ -56,11 +61,25 @@
             >
                 BACK
             </button>
-        </form>
+        </vee-form>
     </div>
 </template>
 <script>
 export default {
+    data() {
+        return {
+            schema: {
+                fullname: 'required',
+                username: 'required|min:3|max:8',
+                email: 'required|email',
+                age: 'required|min_value:18|max_value:100',
+                password: 'required|min:6|max:30',
+                confirm_password: 'password_mismatch:@password',
+                country: 'required|excluded:Antarctica',
+                tos: 'required'
+            },
+        }
+    },
     emits: ['closeRegister'],
     methods: {
         closeModel() {
