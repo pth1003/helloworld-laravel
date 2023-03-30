@@ -27,13 +27,15 @@ class ShoesController extends Controller
 //        $file->move(public_path('images'), $filename);
 
         $data = [
-            'name'=>$request->name,
-            'price'=>$request->price,
-            'quantity'=>$request->quantity,
-            'image'=>$request->image
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'image' => $request->image
         ];
         Shoe::create($data);
-        return response()->json('Insert Sucsess');
+        return response()->json([
+            'message'=>'Insert Sucsess'
+        ]);
     }
 
     public function index()
@@ -61,7 +63,16 @@ class ShoesController extends Controller
         $shoe->update($request->all());
 
         return response()->json([
-            'message'=>'Successfully updated'
+            'message' => 'Successfully updated'
+        ]);
+    }
+
+    public function delete($id)
+    {
+        Shoe::find($id)->delete();
+
+        return response()->json([
+            'message'=>'Successfully deleted'
         ]);
     }
 

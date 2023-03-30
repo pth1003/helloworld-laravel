@@ -27,6 +27,7 @@ const routes = [
     },
     {
         path: '/shoe',
+        name:'shoe-delete',
         redirect: {name : 'home'}
     },
     {
@@ -34,6 +35,7 @@ const routes = [
         name:'shoe-add',
         component: ShoeAdd
     },
+
 ]
 
 const router = createRouter({

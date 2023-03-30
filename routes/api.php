@@ -21,4 +21,5 @@ Route::get('/shoe/{id}/edit', [ShoesController::class, 'edit']);
 
 Route::post('/shoe/add', [ShoesController::class, 'store']);
 
+Route::get('/shoe/{id}/del', [ShoesController::class, 'delete']);
 

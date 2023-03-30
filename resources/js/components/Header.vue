@@ -14,10 +14,10 @@
                         <a class="px-2 text-white" href="#">Product</a>
                     </li>
                     <li>
-                        <a class="px-2 text-white" href="#">Login</a>
+                        <button class="px-2 text-white" @click="isLogin=true">Login</button>
                     </li>
                     <li>
-                        <a class="px-2 text-white" href="#">Register</a>
+                        <button class="px-2 text-white" @click="isRegister=true">Register</button>
                     </li>
                     <li>
                         <router-link class="px-2 text-white" :to="{name: 'shoe-add'}">Add Shoe</router-link>
@@ -26,4 +26,23 @@
             </div>
         </nav>
     </header>
+    <Login v-if="isLogin" @openFormRegister="isRegister=true" @closeForm = "isLogin=false"></Login>
+    <Register v-if="isRegister" @closeRegister="isRegister=false"></Register>
 </template>
+<script>
+import Login from "../views/Authentication/Login.vue";
+import Register from "../views/Authentication/Register.vue";
+
+export default {
+    components: {
+      Login,
+      Register
+    },
+    data() {
+        return {
+            isLogin: false,
+            isRegister: false
+        }
+    }
+}
+</script>

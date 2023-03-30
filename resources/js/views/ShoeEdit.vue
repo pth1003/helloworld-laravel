@@ -22,7 +22,7 @@
             enter-active-class="animate__animated animate__backInDown"
             leave-active-class="animate__animated animate__bounceOut"
         >
-            <div class="bg-green-400 text-white py-2 px-10" v-if="message != ''"> {{ message }} </div>
+            <div class="animate__animated animate__bounceIn bg-green-400 text-white py-2 px-10" v-if="message != ''"> {{ message }} </div>
         </transition>
     </div>
 </template>
@@ -51,7 +51,7 @@ export default {
                         this.message = response.data.message
                         setTimeout(() => {
                             this.$router.push({name: 'home'});
-                        }, 1000)
+                        }, 1500)
                     })
             } catch (error) {
                 console.log('ERROR: ',error)
